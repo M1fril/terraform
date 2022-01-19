@@ -21,6 +21,14 @@ resource "aws_security_group" "mongo_trafic" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+   ingress {
+    description = "Custom"
+    from_port   = 9216
+    to_port     = 9216
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     description = "SSH"
     from_port   = 22
@@ -88,6 +96,14 @@ resource "aws_security_group" "postgres_trafic" {
     description = "Custom"
     from_port   = 9100
     to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Custom"
+    from_port   = 9187
+    to_port     = 9187
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
